@@ -31,7 +31,6 @@ const users = [
 export default function User_Page() {
   return (
     <div className="flex h-screen">
-      {/* Sidebar */}
       <aside className="w-[200px] bg-white-100 p-4 flex flex-col">
         <h1 className="text-2xl font-bold text-center">Connect</h1>
         <nav className="flex flex-col gap-3 mt-6">
@@ -62,7 +61,6 @@ export default function User_Page() {
         </nav>
       </aside>
 
-      {/* Main Content */}
       <main className="flex-1 p-6 bg-white relative">
         <div className="w-full px-6">
           <input
@@ -72,7 +70,6 @@ export default function User_Page() {
             className="w-full border border-gray-300 rounded-md p-2 mb-6"
           />
 
-          {/* User List */}
           <div className="space-y-4">
             {users.map((user, index) => (
               <div
@@ -101,7 +98,6 @@ export default function User_Page() {
           </div>
         </div>
 
-        {/* Add Button - Bottom Right */}
         <button
           type="button"
           aria-label="Tambah User"
