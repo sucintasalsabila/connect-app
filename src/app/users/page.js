@@ -31,7 +31,7 @@ const users = [
 export default function User_Page() {
   return (
     <div className="flex h-screen">
-      <aside className="w-[200px] bg-white-100 p-4 flex flex-col">
+      <aside className="w-[200px] bg-white border-r border-gray-300 p-4 flex flex-col">
         <h1 className="text-2xl font-bold text-center">Connect</h1>
         <nav className="flex flex-col gap-3 mt-6">
           <button
