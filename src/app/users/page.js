@@ -1,32 +1,11 @@
-'use client';
-import { IconUser, IconUserCog, IconLogout, IconPlus } from '@tabler/icons-react';
-
-const users = [
-  {
-    name: 'Rahmat Saudi Al Fathir As',
-    email: 'rahmatsaudi@universitasmulia.ac.id',
-    roles: ['Admin', 'Employee'],
-    status: 'Aktif',
-  },
-  {
-    name: 'Lintang',
-    email: 'lintang@universitasmulia.ac.id',
-    roles: ['Employee'],
-    status: 'Aktif',
-  },
-  {
-    name: 'Shafira',
-    email: 'shafira@universitasmulia.ac.id',
-    roles: ['Employee'],
-    status: 'Aktif',
-  },
-  {
-    name: 'Lebah Ganteng',
-    email: 'lebahganteng@universitasmulia.ac.id',
-    roles: ['Employee'],
-    status: 'Suspended',
-  },
-];
+"use client";
+import UserCard from "@/components/ui/user-card";
+import {
+  IconUser,
+  IconUserCog,
+  IconLogout,
+  IconPlus,
+} from "@tabler/icons-react";
 
 export default function User_Page() {
   return (
@@ -69,33 +48,8 @@ export default function User_Page() {
             aria-label="Cari user"
             className="w-full border border-gray-300 rounded-md p-2 mb-6"
           />
-
-          <div className="space-y-4">
-            {users.map((user, index) => (
-              <div
-                key={index}
-                className="flex justify-between items-center border rounded-md p-4 hover:shadow-md transition"
-              >
-                <div>
-                  <div className="font-semibold">{user.name}</div>
-                  <div className="text-sm text-gray-600">{user.email}</div>
-                  <div className="mt-2 flex gap-2">
-                    {user.roles.map((role, i) => (
-                      <span
-                        key={i}
-                        className="bg-gray-800 text-white text-xs px-2 py-1 rounded"
-                      >
-                        {role}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <div className={`font-semibold ${user.status === 'Suspended' ? 'text-black' : 'text-black'}`}>
-                  {user.status}
-                </div>
-              </div>
-            ))}
-          </div>
+          <UserCard/>
+           <UserCard/>
         </div>
 
         <button
