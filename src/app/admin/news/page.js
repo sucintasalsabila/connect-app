@@ -9,7 +9,7 @@ import {
 } from "@tabler/icons-react";
 import useSWR from "swr";
 
-export default function User_Page() {
+export default function news_page() {
   const data = dataUser;
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
@@ -17,7 +17,7 @@ export default function User_Page() {
     data: users,
     error,
     isLoading,
-  } = useSWR(`https://jsonplaceholder.typicode.com/users`, fetcher);
+  } = useSWR(`https://jsonplaceholder.typicode.com/posts`, fetcher);
 
   if (isLoading) {
     return (
@@ -49,10 +49,10 @@ export default function User_Page() {
         {users.map((employee, index) => (
           <UserCard
             key={index}
-            fullname={employee.name}
-            email={employee.email}
-            role={employee.address.street}
-            status={employee.address.city}
+            fullname={employee.title}
+            email={employee.body}
+            role={employee.UserID}
+            status={employee.id}
           />
         ))}
       </div>
