@@ -56,9 +56,11 @@ export default function news_page() {
           />
         ))}
       </div>
-      <button className="absolute bottom-6 right-6 bg-gray-200 hover:bg-gray-300 p-3 rounded shadow text-black">
-        <IconPlus size={20} />
-      </button>
+      <div className="flex justify-end mt-6">
+        <button className="bg-gray-200 hover:bg-gray-300 p-3 rounded shadow text-black">
+          <IconPlus size={20} />
+        </button>
+      </div>
     </div>
   );
 }
