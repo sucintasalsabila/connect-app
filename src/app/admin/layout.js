@@ -6,6 +6,10 @@ import {
   IconNews,
   IconLogout,
   IconMessage,
+  IconMessage2,
+  IconMessageCircle,
+  IconBrandProducthunt,
+  IconPackage,
 } from "@tabler/icons-react";
 
 export default function AdminLayout({ children }) {
@@ -52,6 +56,26 @@ export default function AdminLayout({ children }) {
             >
               <IconMessage size={20} />
               Chat Dokter
+            </button>
+          </Link>
+          <Link href="/admin/comments">
+            <button
+              type="button"
+              aria-label="Chat Dokter"
+              className="flex items-center gap-2 px-2 py-1 hover:bg-gray-200 w-[150px] rounded-md"
+            >
+              <IconMessageCircle size={20} />
+              Comments
+            </button>
+          </Link>
+          <Link href="/admin/product">
+            <button
+              type="button"
+              aria-label="Chat Dokter"
+              className="flex items-center gap-2 px-2 py-1 hover:bg-gray-200 w-[150px] rounded-md"
+            >
+              <IconPackage size={20} />
+              Product
             </button>
           </Link>
           <button

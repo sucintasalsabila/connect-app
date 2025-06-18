@@ -4,7 +4,7 @@ import { useState } from "react";
 import useSWR from "swr";
 import { IconPlus, IconMessage } from "@tabler/icons-react";
 
-export default function ChatPage() {
+export default function Chat_Page() {
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { data: doctors, error, isLoading } = useSWR(
     "https://jsonplaceholder.typicode.com/users",
@@ -20,7 +20,6 @@ export default function ChatPage() {
     setChatMessages([...chatMessages, { from: "user", text: inputMessage }]);
     setInputMessage("");
 
-    // Simulasi jawaban dokter
     setTimeout(() => {
       setChatMessages((prev) => [
         ...prev,
@@ -74,16 +73,14 @@ export default function ChatPage() {
               chatMessages.map((msg, idx) => (
                 <div
                   key={idx}
-                  className={`mb-2 ${
-                    msg.from === "user" ? "text-right" : "text-left"
-                  }`}
+                  className={`mb-2 ${msg.from === "user" ? "text-right" : "text-left"
+                    }`}
                 >
                   <span
-                    className={`inline-block px-3 py-1 rounded ${
-                      msg.from === "user"
+                    className={`inline-block px-3 py-1 rounded ${msg.from === "user"
                         ? "bg-blue-200 text-blue-900"
                         : "bg-green-200 text-green-900"
-                    }`}
+                      }`}
                   >
                     {msg.text}
                   </span>

@@ -10,7 +10,6 @@ import {
 import useSWR from "swr";
 
 export default function news_page() {
-  const data = dataUser;
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
   const {
@@ -41,8 +40,8 @@ export default function news_page() {
     <div>
       <input
         type="text"
-        placeholder="Cari user"
-        aria-label="Cari user"
+        placeholder="Cari berita"
+        aria-label="Cari berita"
         className="w-full border border-gray-300 rounded-md p-2 mb-6"
       />
       <div className="flex flex-col gap-4">
