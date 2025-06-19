@@ -5,7 +5,7 @@ import {
   IconUserCog,
   IconNews,
   IconLogout,
-  IconMessage,
+  IconFlame,
   IconMessage2,
   IconMessageCircle,
   IconBrandProducthunt,
@@ -48,14 +48,14 @@ export default function AdminLayout({ children }) {
               Berita{" "}
             </button>
           </Link>
-          <Link href="/admin/chat">
+          <Link href="/admin/reci">
             <button
               type="button"
               aria-label="Chat Dokter"
               className="flex items-center gap-2 px-2 py-1 hover:bg-gray-200 w-[150px] rounded-md"
             >
-              <IconMessage size={20} />
-              Chat Dokter
+              <IconFlame size={20} />
+              recipes
             </button>
           </Link>
           <Link href="/admin/comments">
