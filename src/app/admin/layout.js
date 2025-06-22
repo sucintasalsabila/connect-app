@@ -1,4 +1,6 @@
+"use client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import {
   IconUser,
@@ -13,6 +15,12 @@ import {
 } from "@tabler/icons-react";
 
 export default function AdminLayout({ children }) {
+  const router = useRouter();
+
+  const handleLogout = () => {
+    router.push("/");
+  };
+
   return (
     <div className="flex w-screen h-screen">
       <aside className="w-[200px] bg-white border-r border-gray-300 p-4 flex flex-col">
@@ -48,10 +56,10 @@ export default function AdminLayout({ children }) {
               Berita{" "}
             </button>
           </Link>
-          <Link href="/admin/reci">
+          <Link href="/admin/recipes">
             <button
               type="button"
-              aria-label="Chat Dokter"
+              aria-label="recipes"
               className="flex items-center gap-2 px-2 py-1 hover:bg-gray-200 w-[150px] rounded-md"
             >
               <IconFlame size={20} />
@@ -61,7 +69,7 @@ export default function AdminLayout({ children }) {
           <Link href="/admin/comments">
             <button
               type="button"
-              aria-label="Chat Dokter"
+              aria-label="Komentar"
               className="flex items-center gap-2 px-2 py-1 hover:bg-gray-200 w-[150px] rounded-md"
             >
               <IconMessageCircle size={20} />
@@ -71,7 +79,7 @@ export default function AdminLayout({ children }) {
           <Link href="/admin/product">
             <button
               type="button"
-              aria-label="Chat Dokter"
+              aria-label="Produk"
               className="flex items-center gap-2 px-2 py-1 hover:bg-gray-200 w-[150px] rounded-md"
             >
               <IconPackage size={20} />
@@ -80,7 +88,7 @@ export default function AdminLayout({ children }) {
           </Link>
           <button
             type="button"
-            aria-label="Logout"
+            onClick={handleLogout}
             className="flex items-center gap-2 px-2 py-1 hover:bg-gray-200 w-[150px] rounded-md"
           >
             <IconLogout size={20} />

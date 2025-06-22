@@ -2,9 +2,6 @@
 import UserCard from "@/components/ui/user-card";
 import { dataUser } from "@/mock/data-user";
 import {
-  IconUser,
-  IconUserCog,
-  IconLogout,
   IconPlus,
   IconPencil,
   IconTrash,
@@ -43,8 +40,8 @@ export default function User_Page() {
     <div>
       <input
         type="text"
-        placeholder="Cari user"
-        aria-label="Cari user"
+        placeholder="Cari Hak Akses"
+        aria-label="Cari Hak Akses"
         className="w-full border border-gray-300 rounded-md p-2 mb-6"
       />
       <table className="w-full text-sm mb-6">

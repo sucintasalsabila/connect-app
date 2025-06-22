@@ -2,10 +2,7 @@
 import UserCard from "@/components/ui/user-card";
 import { dataUser } from "@/mock/data-user";
 import {
-  IconUser,
-  IconUserCog,
-  IconLogout,
-  IconPlus,
+IconNews
 } from "@tabler/icons-react";
 import useSWR from "swr";
 
@@ -40,8 +37,8 @@ export default function news_page() {
     <div>
       <input
         type="text"
-        placeholder="Cari berita"
-        aria-label="Cari berita"
+        placeholder="Cari Berita"
+        aria-label="Cari Berita"
         className="w-full border border-gray-300 rounded-md p-2 mb-6"
       />
       <div className="flex flex-col gap-4">
@@ -54,11 +51,6 @@ export default function news_page() {
             status={employee.id}
           />
         ))}
-      </div>
-      <div className="flex justify-end mt-6">
-        <button className="bg-gray-200 hover:bg-gray-300 p-3 rounded shadow text-black">
-          <IconPlus size={20} />
-        </button>
       </div>
     </div>
   );

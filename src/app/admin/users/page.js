@@ -3,8 +3,6 @@ import UserCard from "@/components/ui/user-card";
 import { dataUser } from "@/mock/data-user";
 import {
   IconUser,
-  IconUserCog,
-  IconLogout,
   IconPlus,
 } from "@tabler/icons-react";
 import useSWR from "swr";

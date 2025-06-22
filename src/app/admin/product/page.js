@@ -25,8 +25,8 @@ export default function Product_Page() {
     <div>
       <input
         type="text"
-        placeholder="Cari produk"
-        aria-label="Cari produk"
+        placeholder="Cari Produk"
+        aria-label="Cari Produk"
         className="w-full border border-gray-300 rounded-md p-2 mb-6"
       />
 
