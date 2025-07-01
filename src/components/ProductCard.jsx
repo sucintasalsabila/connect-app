@@ -4,11 +4,12 @@ import {
   IconCategory,
   IconCurrencyDollar,
   IconStar,
+  IconShoppingCartPlus,
 } from "@tabler/icons-react";
 
-export default function ProductCard({ fullname, email, role, status, image }) {
+export default function ProductCard({ fullname, email, role, status, image, onAddToCart }) {
   return (
-    <div className="border rounded-lg p-2 flex items-center gap-4 bg-white shadow-sm">
+    <div className="border rounded-lg p-2 flex items-center gap-4 bg-white shadow-sm relative">
       {/* Gambar Produk */}
       <img
         src={image}
@@ -52,6 +53,15 @@ export default function ProductCard({ fullname, email, role, status, image }) {
           </p>
         </div>
       </div>
+
+      {/* Tombol Tambah ke Troli */}
+      <button
+        onClick={() => onAddToCart?.({ fullname, email, role, status, image })}
+        className="absolute bottom-2 right-2 bg-blue-500 hover:bg-blue-600 text-white p-[6px] rounded-full shadow-md"
+        title="Tambah ke Troli"
+      >
+        <IconShoppingCartPlus size={16} />
+      </button>
     </div>
   );
 }
