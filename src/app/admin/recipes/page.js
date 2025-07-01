@@ -107,16 +107,16 @@ export default function Recipes_Page() {
 
   return (
     <div>
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex justify-between items-center mb-6 gap-4 flex-wrap">
         <input
           type="text"
-          placeholder="Cari resep..."
-          aria-label="Cari resep"
-          className="w-full border border-gray-300 rounded-md p-2"
+          placeholder="Cari Resep"
+          aria-label="Cari Resep"
+          className="flex-1 border border-gray-300 rounded-md p-2 min-w-[200px]"
         />
         <button
           onClick={() => setShowForm(!showForm)}
-          className="ml-4 bg-gray-300 text-black px-2 py-1 rounded flex items-center gap-1"
+          className="flex items-center gap-1 border px-3 py-2 rounded-md bg-gray-100 hover:bg-gray-200"
         >
           <IconPlus size={20} />
           Tambah Resep
