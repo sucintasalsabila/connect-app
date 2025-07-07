@@ -75,9 +75,9 @@ export default function CommentCard({ comment, localComments, setLocalComments }
       const updatedList = localComments.map((c) =>
         c.id === comment.id
           ? {
-              ...c,
-              replies: [...(c.replies || []), newReply],
-            }
+            ...c,
+            replies: [...(c.replies || []), newReply],
+          }
           : c
       );
       setLocalComments(updatedList);
@@ -152,7 +152,6 @@ export default function CommentCard({ comment, localComments, setLocalComments }
         <ReplyBox onReply={handleAddReply} onClose={() => setReplying(false)} />
       )}
 
-      {/* Tampilkan balasan */}
       {comment.replies && comment.replies.length > 0 && (
         <div className="ml-4 mt-3 border-l-2 pl-4 border-gray-200">
           <div className="text-sm text-gray-600 font-medium mb-1">Balasan:</div>

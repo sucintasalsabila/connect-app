@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import UserCard from "@/components/ui/user-card";
-import ProductCard from "@/components/ProductCard"; // ✅ Tambahkan ini
+import { useRouter } from "next/navigation";
+import ProductCard from "@/components/ProductCard";
 import {
   IconChevronDown,
   IconHeart,
@@ -15,18 +15,49 @@ import useSWR from "swr";
 
 export default function Product_Page() {
   const fetcher = (url) => fetch(url).then((res) => res.json());
+  const router = useRouter();
 
-  const {
-    data: productsData,
-    error,
-    isLoading,
-  } = useSWR("https://dummyjson.com/products", fetcher);
+  const { data: productsData, error, isLoading } = useSWR(
+    "https://dummyjson.com/products",
+    fetcher
+  );
 
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [showCategoryMenu, setShowCategoryMenu] = useState(false);
 
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Gagal memuat data</p>;
+  const handleAddToCart = (product) => {
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+
+    const newItem = {
+      id: product.id,
+      fullname: product.title,
+      email: `Brand: ${product.brand}`,
+      role: product.category,
+      status: `Rp${product.price.toLocaleString("id-ID")} • ${product.rating}`,
+      image: product.thumbnail,
+      qty: 1,
+    };
+
+    const updatedCart = [...cart, newItem];
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    router.push("/admin/product/checkout");
+  };
+
+  if (isLoading) {
+    return (
+      <div>
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div>
+        <p>Gagal memuat data</p>
+      </div>
+    );
+  }
 
   const categoryTabs = [
     { key: "all", label: "Semua", icon: IconApps },
@@ -40,8 +71,8 @@ export default function Product_Page() {
     selectedCategory === "all"
       ? productsData.products
       : productsData.products.filter(
-          (product) => product.category === selectedCategory
-        );
+        (product) => product.category === selectedCategory
+      );
 
   return (
     <div>
@@ -49,7 +80,6 @@ export default function Product_Page() {
         <input
           type="text"
           placeholder="Cari Produk"
-          aria-label="Cari Produk"
           className="flex-1 border border-gray-300 rounded-md p-2 min-w-[200px]"
         />
 
@@ -73,11 +103,10 @@ export default function Product_Page() {
                       setSelectedCategory(cat.key);
                       setShowCategoryMenu(false);
                     }}
-                    className={`flex items-center gap-2 w-full px-3 py-2 text-sm hover:bg-gray-100 ${
-                      selectedCategory === cat.key
-                        ? "bg-gray-200 font-semibold"
-                        : ""
-                    }`}
+                    className={`flex items-center gap-2 w-full px-3 py-2 text-sm hover:bg-gray-100 ${selectedCategory === cat.key
+                      ? "bg-gray-200 font-semibold"
+                      : ""
+                      }`}
                   >
                     <Icon size={18} />
                     {cat.label}
@@ -89,7 +118,6 @@ export default function Product_Page() {
         </div>
       </div>
 
-      {/* ✅ Tambahan: ProductCard dengan gambar, harga, rating */}
       <div className="flex flex-col gap-4 mt-10">
         {filteredProducts.map((product) => (
           <ProductCard
@@ -99,6 +127,7 @@ export default function Product_Page() {
             role={product.category}
             status={`Rp${product.price.toLocaleString("id-ID")} • ${product.rating}`}
             image={product.thumbnail}
+            onAddToCart={() => handleAddToCart(product)}
           />
         ))}
       </div>

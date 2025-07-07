@@ -13,8 +13,8 @@ export default function RecipeDetailPage() {
     error,
     isLoading,
   } = useSWR(`https://dummyjson.com/recipes/${id}`, fetcher);
-  
-if (isLoading) {
+
+  if (isLoading) {
     return <p>Loading...</p>;
   }
 

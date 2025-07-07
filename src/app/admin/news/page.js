@@ -2,7 +2,7 @@
 import UserCard from "@/components/ui/user-card";
 import { dataUser } from "@/mock/data-user";
 import {
-IconNews
+  IconNews
 } from "@tabler/icons-react";
 import useSWR from "swr";
 

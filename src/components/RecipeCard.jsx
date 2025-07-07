@@ -1,4 +1,4 @@
- export default function RecipeCard({ recipe }) {
+export default function RecipeCard({ recipe }) {
   return (
     <div className="card">
       <h3>{recipe.title}</h3>

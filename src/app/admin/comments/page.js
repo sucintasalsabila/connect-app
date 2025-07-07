@@ -15,7 +15,6 @@ export default function CommentsPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const commentsPerPage = 10;
 
-  // Ambil dari localStorage
   useEffect(() => {
     const stored = localStorage.getItem("localComments");
     if (stored) {
@@ -30,15 +29,26 @@ export default function CommentsPage() {
     }
   }, []);
 
-  // Simpan ke localStorage jika localComments berubah
   useEffect(() => {
     localStorage.setItem("localComments", JSON.stringify(localComments));
   }, [localComments]);
 
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Gagal memuat data</p>;
+  if (isLoading) {
+    return (
+      <div>
+        <p>Loading...</p>
+      </div>
+    );
+  }
 
-  // ✅ Ganti bagian ini untuk merge komentar API dan lokal
+  if (error) {
+    return (
+      <div>
+        <p>Gagal memuat data</p>
+      </div>
+    );
+  }
+
   const localMap = new Map(localComments.map((c) => [c.id, c]));
 
   const mergedComments = data.comments.map((c) =>
@@ -51,19 +61,16 @@ export default function CommentsPage() {
 
   const allComments = [...onlyLocal, ...mergedComments];
 
-  // 🔍 Filter pencarian
   const filteredComments = allComments.filter((comment) =>
     comment.body.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // 📄 Pagination
   const totalPages = Math.ceil(filteredComments.length / commentsPerPage);
   const paginatedComments = filteredComments.slice(
     (currentPage - 1) * commentsPerPage,
     currentPage * commentsPerPage
   );
 
-  // ➕ Tambah komentar baru
   const handleAddComment = () => {
     if (!newComment.trim()) return;
 
@@ -82,7 +89,6 @@ export default function CommentsPage() {
     setCurrentPage(1);
   };
 
-  // 🔄 Update local comments dari child
   const handleUpdateLocalComments = (updatedList) => {
     setLocalComments(updatedList);
   };

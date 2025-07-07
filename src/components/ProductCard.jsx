@@ -1,3 +1,4 @@
+"use client";
 import {
   IconTag,
   IconBuildingStore,
@@ -7,32 +8,30 @@ import {
   IconShoppingCartPlus,
 } from "@tabler/icons-react";
 
-export default function ProductCard({ fullname, email, role, status, image, onAddToCart }) {
+export default function ProductCard({
+  fullname,
+  email,
+  role,
+  status,
+  image,
+  onAddToCart,
+}) {
+  const [price, rating] = status.split("•").map((s) => s.trim());
+
   return (
     <div className="border rounded-lg p-2 flex items-center gap-4 bg-white shadow-sm relative">
-      {/* Gambar Produk */}
-      <img
-        src={image}
-        alt={fullname}
-        className="w-20 h-20 object-cover rounded"
-      />
+      <img src={image} alt={fullname} className="w-20 h-20 object-cover rounded" />
 
-      {/* Info Produk */}
-      <div className="flex justify-between items-center w-full">
+      <div className="flex justify-between items-start w-full">
         <div>
-          {/* Nama Produk */}
           <h2 className="text-[18px] font-bold mb-[6px] flex items-center gap-1">
             <IconTag size={18} />
             {fullname}
           </h2>
-
-          {/* Brand */}
           <p className="text-sm text-gray-600 flex items-center gap-1 mb-1">
             <IconBuildingStore size={16} />
             {email}
           </p>
-
-          {/* Kategori */}
           <div className="flex items-center gap-1 mb-1">
             <IconCategory size={16} />
             <span className="bg-black text-white text-[11px] px-[9px] py-[4px] rounded">
@@ -41,27 +40,26 @@ export default function ProductCard({ fullname, email, role, status, image, onAd
           </div>
         </div>
 
-        {/* Harga + Rating */}
-        <div className="text-right space-y-1">
-          <p className="text-green-600 font-semibold text-sm flex items-center gap-1 justify-end">
+        <div className="flex flex-col items-end justify-between h-full gap-1 pr-1">
+          <p className="text-green-600 font-semibold text-sm flex items-center gap-1">
             <IconCurrencyDollar size={16} />
-            {status.split("•")[0].trim()} {/* Harga */}
+            {price}
           </p>
-          <p className="text-yellow-500 text-sm flex items-center gap-1 justify-end">
+          <p className="text-yellow-500 text-sm flex items-center gap-1">
             <IconStar size={16} />
-            {status.split("•")[1]?.trim()} {/* Rating */}
+            {rating}
           </p>
+          <button
+            onClick={() =>
+              onAddToCart?.({ fullname, email, role, status, image, qty: 1 })
+            }
+            className="mt-2 bg-gray-400 hover:bg-gray-600 text-white p-[6px] rounded-full shadow-md"
+            title="Tambah ke Troli"
+          >
+            <IconShoppingCartPlus size={16} />
+          </button>
         </div>
       </div>
-
-      {/* Tombol Tambah ke Troli */}
-      <button
-        onClick={() => onAddToCart?.({ fullname, email, role, status, image })}
-        className="absolute bottom-2 right-2 bg-blue-500 hover:bg-blue-600 text-white p-[6px] rounded-full shadow-md"
-        title="Tambah ke Troli"
-      >
-        <IconShoppingCartPlus size={16} />
-      </button>
     </div>
   );
 }
